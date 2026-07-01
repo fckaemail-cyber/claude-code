@@ -15,8 +15,8 @@ import urllib.request
 
 # provider -> (endpoint, env var holding the key, default model)
 PROVIDERS = {
-    "gpt": ("https://api.openai.com/v1/chat/completions", "OPENAI_API_KEY", "gpt-4o"),
-    "grok": ("https://api.x.ai/v1/chat/completions", "XAI_API_KEY", "grok-2-latest"),
+    "gpt": ("https://api.openai.com/v1/chat/completions", "OPENAI_API_KEY", "gpt-5.5"),
+    "grok": ("https://api.x.ai/v1/chat/completions", "XAI_API_KEY", "grok-4"),
 }
 
 

@@ -33,8 +33,8 @@ Optionally pass a model name as a third argument to override the default:
 python3 .claude/skills/ask-other-model/ask.py gpt "Explain this diff" gpt-4o-mini
 ```
 
-Defaults: `gpt` -> `gpt-4o`, `grok` -> `grok-2-latest`. Change these if you
-have access to different models.
+Defaults: `gpt` -> `gpt-5.5`, `grok` -> `grok-4`. Pass a third argument to use a
+different model you have access to, e.g. `gpt-5.4`.
 
 ## How to present results
 
