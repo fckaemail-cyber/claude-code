@@ -976,6 +976,53 @@ p { max-width: 62ch; }
 .kg-embed .kg-close { display: none; }
 
 /* ==========================================================================
+   Ambient motion — premium polish
+   ========================================================================== */
+@keyframes glow-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-1.5%, 1.5%, 0) scale(1.06); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.page-glow { animation: glow-drift 22s ease-in-out infinite; }
+
+@keyframes hero-float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+.drink-hero-visual { animation: hero-float 7s ease-in-out infinite; will-change: transform; }
+
+/* Soft moving sheen that sweeps across glass + drink cards on hover */
+.glass-card, .drink-card { position: relative; }
+.glass-card::after, .drink-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.10) 50%, transparent 60%);
+  background-size: 250% 250%;
+  background-position: 120% 0;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.glass-card:hover::after, .drink-card:hover::after {
+  opacity: 1;
+  animation: sheen 0.9s var(--ease);
+}
+@keyframes sheen {
+  from { background-position: 120% 0; }
+  to   { background-position: -40% 0; }
+}
+
+/* Gentle pulse on the gold hero status dot */
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--gold); }
+  50%      { box-shadow: 0 0 18px var(--gold); }
+}
+.hero .micro::before { animation: dot-pulse 2.6s ease-in-out infinite; }
+
+/* ==========================================================================
    Scroll reveal animation
    ========================================================================== */
 .reveal {
@@ -989,6 +1036,8 @@ p { max-width: 62ch; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn, .glass-card, .drink-card, .kg-fab { transition: none; }
+  .page-glow, .drink-hero-visual, .hero .micro::before { animation: none; }
+  .glass-card:hover::after, .drink-card:hover::after { animation: none; opacity: 0; }
 }
 
 /* ==========================================================================
