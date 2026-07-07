@@ -1,5 +1,5 @@
 /* ==========================================================================
-   [BRAND NAME] — site behavior
+   Tribal Kava Lounge — site behavior
    Mobile nav, scroll reveal, drink art placeholders, Ask the Kava Guide
    ========================================================================== */
 (function () {
@@ -237,12 +237,12 @@
     {
       match: /(hour|open|close|when)/i,
       reply:
-        "Our hours are [HOURS]. You can find live details on the Visit Us page — or call us at [PHONE]."
+        "Our hours are Sun–Thu 8 AM–12 AM, Fri–Sat 8 AM–1 AM. You can find live details on the Visit Us page — or message us on Instagram @TribalKavaBarLounge."
     },
     {
       match: /(where|address|located|location|direction|parking|find you)/i,
       reply:
-        "We’re at [ADDRESS]. The Visit Us page has a map, parking info, and one-tap directions. See you soon!"
+        "We’re at 770 S Military Trail, West Palm Beach, FL 33415. The Visit Us page has a map, parking info, and one-tap directions. See you soon!"
     },
     {
       match: /(event|open mic|dj|study night|pop.?up|birthday|private)/i,
