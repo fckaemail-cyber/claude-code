@@ -44,44 +44,32 @@
                data-garnish="mint|citrus|berry|choco|straw" aria-label="...">
   ------------------------------------------------------------------ */
   function drinkArtSVG(c1, c2, garnish, id) {
-    var garnishShape = {
-      mint: '<g transform="translate(200,54)"><path d="M0 0 C-14 -18 -30 -16 -34 -2 C-20 6 -6 4 0 0Z" fill="#3fae6a"/><path d="M0 0 C14 -18 30 -16 34 -2 C20 6 6 4 0 0Z" fill="#4cc97d"/></g>',
-      citrus: '<g transform="translate(206,52)"><circle r="24" fill="#f5d23f"/><circle r="18" fill="#faf0b0"/><g stroke="#f5d23f" stroke-width="3">' +
-        '<line x1="0" y1="-16" x2="0" y2="16"/><line x1="-16" y1="0" x2="16" y2="0"/><line x1="-11" y1="-11" x2="11" y2="11"/><line x1="-11" y1="11" x2="11" y2="-11"/></g></g>',
-      berry: '<g transform="translate(204,50)"><circle r="11" fill="#7c3aed"/><circle cx="-14" cy="8" r="9" fill="#a855f7"/><circle cx="12" cy="10" r="8" fill="#6d28d9"/></g>',
-      choco: '<g transform="translate(202,52)"><rect x="-16" y="-12" width="32" height="24" rx="4" fill="#5b3a24"/><rect x="-16" y="-12" width="32" height="10" rx="4" fill="#7a4f30"/></g>',
-      straw: '<g transform="translate(150,10) rotate(18)"><rect x="-5" y="0" width="10" height="120" rx="5" fill="' + c2 + '" opacity="0.9"/></g>'
-    }[garnish] || "";
-
+    /* Premium branded panel: color gradient + soft light + tribal arc + kava-leaf line art.
+       (Real product photography drops in over these when available.) */
     return (
-      '<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true">' +
+      '<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" focusable="false" aria-hidden="true">' +
       '<defs>' +
-      '<linearGradient id="bg' + id + '" x1="0" y1="0" x2="1" y2="1">' +
-      '<stop offset="0" stop-color="#141a29"/><stop offset="1" stop-color="#0b0e16"/></linearGradient>' +
-      '<linearGradient id="dk' + id + '" x1="0" y1="0" x2="0" y2="1">' +
+      '<linearGradient id="g' + id + '" x1="0" y1="0" x2="1" y2="1">' +
       '<stop offset="0" stop-color="' + c1 + '"/><stop offset="1" stop-color="' + c2 + '"/></linearGradient>' +
-      '<radialGradient id="gl' + id + '" cx="0.5" cy="0.45" r="0.65">' +
-      '<stop offset="0" stop-color="' + c1 + '" stop-opacity="0.55"/><stop offset="1" stop-color="' + c1 + '" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="h' + id + '" cx="0.74" cy="0.16" r="0.9">' +
+      '<stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></radialGradient>' +
       '</defs>' +
-      '<rect width="300" height="240" fill="url(#bg' + id + ')"/>' +
-      '<ellipse cx="150" cy="120" rx="130" ry="105" fill="url(#gl' + id + ')"/>' +
-      /* glass */
-      '<g>' +
-      '<path d="M100 55 L110 215 Q150 228 190 215 L200 55 Z" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>' +
-      /* drink body */
-      '<path d="M104 88 L112 210 Q150 222 188 210 L196 88 Q150 100 104 88Z" fill="url(#dk' + id + ')" opacity="0.92"/>' +
-      /* cloud/cream layer */
-      '<path d="M102 72 Q118 60 134 70 Q146 58 160 68 Q174 56 188 68 Q196 74 198 82 Q150 98 102 82 Z" fill="#f6f0e4" opacity="0.95"/>' +
-      '<path d="M104 88 Q150 102 196 88 L195 104 Q150 116 105 104 Z" fill="#f6f0e4" opacity="0.4"/>' +
-      /* condensation */
-      '<g fill="rgba(255,255,255,0.5)">' +
-      '<circle cx="116" cy="130" r="2.6"/><circle cx="122" cy="168" r="2"/><circle cx="112" cy="196" r="2.4"/>' +
-      '<circle cx="184" cy="140" r="2.4"/><circle cx="180" cy="185" r="2"/><circle cx="188" cy="112" r="2"/>' +
+      '<rect width="300" height="240" fill="url(#g' + id + ')"/>' +
+      '<rect width="300" height="240" fill="url(#h' + id + ')"/>' +
+      '<rect width="300" height="240" fill="#0b0e16" opacity="0.12"/>' +
+      /* tribal chevron arc — nods to the logo */
+      '<g stroke="#f6f0e4" fill="none">' +
+      '<path d="M22 212 Q150 250 278 212" stroke-opacity="0.16" stroke-width="2"/>' +
+      '<path d="M40 214 L50 208 L60 214 M74 216 L84 210 L94 216 M206 216 L216 210 L226 216 M240 214 L250 208 L260 214" stroke-opacity="0.22" stroke-width="2"/>' +
       '</g>' +
-      /* highlight */
-      '<path d="M115 95 L120 200" stroke="rgba(255,255,255,0.35)" stroke-width="5" stroke-linecap="round"/>' +
-      garnishShape +
-      '</g>' +
+      /* kava-leaf silhouette + veins, centered */
+      '<g transform="translate(150,110)">' +
+      '<path d="M0 -58 C34 -46 46 -12 40 24 C36 46 18 58 0 58 C-18 58 -36 46 -40 24 C-46 -12 -34 -46 0 -58 Z" fill="#f6f0e4" fill-opacity="0.13"/>' +
+      '<g stroke="#f6f0e4" stroke-opacity="0.28" stroke-width="1.4" fill="none" stroke-linecap="round">' +
+      '<path d="M0 -54 L0 56"/>' +
+      '<path d="M0 -18 C13 -24 25 -18 33 -5"/><path d="M0 4 C-13 -2 -25 4 -33 18"/>' +
+      '<path d="M0 -2 C13 -8 25 -2 33 11"/><path d="M0 22 C-12 16 -22 20 -30 32"/>' +
+      '</g></g>' +
       '</svg>'
     );
   }
