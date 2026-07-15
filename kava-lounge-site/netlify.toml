@@ -1,0 +1,10 @@
+# Tribal Kava Lounge — static site, no build step.
+# When connecting this repo in Netlify, set "Base directory" to: kava-lounge-site
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
