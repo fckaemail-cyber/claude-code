@@ -401,7 +401,9 @@
           <span class="eyebrow">VIP List</span>
           <h2>Be first to know about drops, events, and soft-opening specials.</h2>
           <p>New flavors, event invites, and opening-week perks — straight to your phone.</p>
-          <form class="vip-form" style="margin-inline:auto;text-align:left" action="#" method="post">
+          <form class="vip-form" name="vip" method="post" data-netlify="true" netlify-honeypot="bot-field" style="margin-inline:auto;text-align:left">
+            <input type="hidden" name="form-name" value="vip">
+            <p style="display:none"><label>Leave this empty: <input name="bot-field"></label></p>
             <div>
               <label for="vip-name">Name</label>
               <input id="vip-name" name="name" type="text" placeholder="Your name" required autocomplete="name">

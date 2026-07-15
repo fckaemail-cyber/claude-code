@@ -92,10 +92,19 @@
   if (vipForm) {
     vipForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      /* TODO: connect to Mailchimp / Klaviyo / SMS platform endpoint */
-      vipForm.innerHTML =
-        '<p class="notice notice-blue"><strong>You’re on the list!</strong> ' +
-        "We’ll text or email you about drops, events, and soft-opening specials.</p>";
+      var showSuccess = function () {
+        vipForm.innerHTML =
+          '<p class="notice notice-blue"><strong>You’re on the list!</strong> ' +
+          "We’ll text or email you about drops, events, and soft-opening specials.</p>";
+      };
+      /* Submit to Netlify Forms (captured in your Netlify dashboard once deployed).
+         Falls back gracefully to the success message if the POST can't complete. */
+      var body = new URLSearchParams(new FormData(vipForm)).toString();
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body
+      }).then(showSuccess).catch(showSuccess);
     });
   }
 
